@@ -189,3 +189,54 @@ Since the answer was fairly long - though very good - it could have given an ans
 
 - What should be improved?
   - prompt
+
+---
+
+## Test case: Good answer about cross-project question
+
+**Query**
+
+```
+"Which projects focus on reducing friction?"
+```
+
+**Result**
+
+```
+Based on the provided context information, I can identify two projects that aim to reduce friction:
+
+• **should-i-read-this**: This project aims to reduce decision-making friction by providing an AI-generated summary of Real Python articles, allowing you to quickly decide whether to read it.
+• **skim-job-ai**: This CLI tool reduces friction by compressing job postings into ultra-condensed summaries, key requirements, and a quick verdict, enabling you to make decisions in seconds.
+
+These projects aim to streamline processes, eliminate unnecessary reading, and save time for users.
+```
+
+**Expected behavior**
+
+It actually provided a really, really good answer that correctly identified the (only) two project that reduces friction - so it should not have done anything else (probably)
+
+**Observed issues**
+
+No issue. Even based on a (very) small sample of md files it provided a very good answer
+
+**Quality assessment**
+
+- Correctness: ✅
+- Completeness: ✅
+- Usefulness: ✅
+
+**Type of question**
+
+- [ ] Single-project (easy)
+- [x] Multi-project (cross-doc reasoning)
+- [ ] Aggregation (list/count)
+- [x] Reflection (patterns / suggestions)
+
+**Hypothesis (why it failed or succeeded)**
+
+It didn't fail on a small data sample (whether that would be the case on a larger sample - I don't know)
+
+**Next step**
+
+- What should be improved?
+  - Nothing actually (as of right now)
