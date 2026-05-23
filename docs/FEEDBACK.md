@@ -1,279 +1,139 @@
-**Prompt [Thanks. I&#039;m glad that my idea for this project... | Try in Copilot Chat](https://m365.cloud.microsoft/chat/entity1-d870f6cd-4aa5-4d42-9626-ab690c041429/eyJpZCI6IlZYTmxjbFl4ZkdoMGRIQnpPaTh2YzNWaWMzUnlZWFJsTFdsdWRDNXZabVpwWTJVdVkyOXRMM3hQU1VRNk5UVTVZVEV5WWprdE9EUTVNaTAwWW1Wa0xUazJOR0V0TW1ZME1HTXlNekF4Wm1JMWZHVTBOV0kzT1RNM0xXUmpaVGd0TkdZMFlpMDRaR1l4TFdFNU5tVmxNVFUxTWpCa00zd3lNREkyTFRBMUxUSXpWREU0T2pFNE9qVTFMakkzTVRVeE5WbyUzZCIsInNjZW5hcmlvIjoic2hhcmVMaW5rVmlhUmljaENvcHkiLCJwcm9wZXJ0aWVzIjp7InByb21wdFNvdXJjZSI6InVzZXIiLCJjbGlja1RpbWVzdGFtcCI6IjIwMjYtMDUtMjNUMTg6MTg6NTUuMzMwWiJ9LCJjaGF0VHlwZSI6IndvcmsiLCJ2ZXJzaW9uIjoxLjF9)**
-Thanks. I'm glad that my idea for this project makes sense to build in order for me to learn how to build RAG systems.
+# FEEDBACK.md
 
-And as github repo name I feel that your suggestion of building something like this for me to use:
+## 🎯 Purpose
 
-"projects-ai ask "What should I build next based on my past projects?" "
+This file documents observations about the RAG system behavior in `projects-ai`.
 
-would be a good idea both for use in the terminal - preferably as a CLI with the name of "projects-ai" - and with a github repo name being something similar, i.e. called "projects-ai" or "projects-rag" or something similar.
+The goal is to:
 
-What's your thoughts on all this?
-**Response**
-This is a **really strong direction** — and honestly it fits you almost perfectly.
+- understand when the system performs well ✅
+- identify failure patterns ❌
+- guide improvements (prompting, structure, retrieval)
 
-Let me give you a clear take + a small refinement so you don’t accidentally make this harder than it needs to be.
+This is NOT about perfect evaluation —  
+this is about **learning through real usage**.
 
-***
+---
 
-# ✅ 1. Naming: “projects-ai” vs “projects-rag”
+## 🧠 Evaluation mindset
 
-### My honest take:
+RAG systems are:
+- probabilistic
+- context-dependent
+- sensitive to structure and prompts
 
-✅ **`projects-ai` → best choice**
+So instead of expecting correctness, we focus on:
 
-* Feels like a *tool*
-* Matches your style (`microsteps-ai`, etc.)
-* Future-proof (can go beyond RAG later)
+- usefulness
+- clarity
+- completeness
+- consistency
 
-⚠️ **`projects-rag` → more technical**
+---
 
-* Feels like a demo/tutorial repo
-* Less “product-y”
+# 📋 Test Entry Template (copy this)
 
-👉 I’d 100% go with:
+## Test case: <short title>
 
+**Query**
 ```
-repo: projects-ai
-cli:  projects-ai
-```
-
-***
-
-# 🧠 2. The key insight: you're not just building RAG
-
-You’re actually building:
-
-> **“A personal project intelligence tool”**
-
-RAG is just the *engine*.
-
-That’s important because it gives you direction later:
-
-* summarization ✅
-* reflection ✅
-* pattern detection ✅
-* idea generation ✅
-
-***
-
-# 🔥 3. Your CLI idea is EXACTLY right
-
-This is where it becomes *you*:
-
-```bash
-projects-ai ask "What is microsteps-ai about?"
-projects-ai ask "List my projects"
-projects-ai ask "What should I build next?"
+<your question>
 ```
 
-This is 🔥 because:
-
-* simple interface ✅
-* reusable ✅
-* aligns with your CLI preference ✅
-* zero UI friction ✅
-
-***
-
-# ⚠️ 4. One important design decision (this will matter!)
-
-Right now your CLI is:
-
-```bash
-projects-ai ask "..."
-```
-
-✅ Good
-
-But you should also consider:
-
-### Add modes (light structure)
-
-```bash
-projects-ai ask "What is microsteps-ai?"
-projects-ai list
-projects-ai count
-projects-ai suggest
-```
-
-Why?
-
-Because:
-
-| Mode    | RAG good? | Better as code? |
-| ------- | --------- | --------------- |
-| ask     | ✅ yes     | optional        |
-| list    | ⚠️ meh    | ✅ yes           |
-| count   | ❌ no      | ✅ yes           |
-| suggest | ✅ yes     | —               |
-
-👉 This is the first “real RAG architecture decision” you’ll make.
-
-***
-
-# 🧩 5. What your project should look like (simple version)
-
-### Folder structure
+**Result**
 
 ```
-projects-ai/
-  data/
-    microsteps-ai.md
-    drdk-ai-summarizer.md
-    
-  src/
-    rag.py
-    cli.py
-    
-  README.md
+<paste model output>
 ```
 
-***
+**Expected behavior**
 
-# ⚙️ 6. MVP features (don’t add more yet)
+* What SHOULD the system have done?
 
-### ✅ V1 (finish this quickly)
+**Observed issues**
 
-* `projects-ai ask "..."` → RAG
-* loads `./data`
-* prints answer
+* What went wrong?
+* Be concrete (missing info, vague answer, wrong reasoning)
 
-***
+**Quality assessment**
 
-### ✅ V2 (after you feel friction)
+* Correctness: ✅ / ⚠️ / ❌
+* Completeness: ✅ / ⚠️ / ❌
+* Usefulness: ✅ / ⚠️ / ❌
 
-* `projects-ai list` → extract titles
-* `projects-ai count` → count files
-* `projects-ai suggest` → RAG + prompt
+**Type of question**
 
-***
+* [ ] Single-project (easy)
+* [ ] Multi-project (cross-doc reasoning)
+* [ ] Aggregation (list/count)
+* [ ] Reflection (patterns / suggestions)
 
-# 🧪 7. Your killer feature (this is VERY you)
+**Hypothesis (why it failed or succeeded)**
 
-This:
+* Retrieval issue?
+* Prompt too weak?
+* Document structure unclear?
 
-```bash
-projects-ai ask "What should I build next based on my past projects?"
-```
+**Next step**
 
-💥 This is the gold.
-
-Because:
-
-* it uses ALL documents
-* requires synthesis
-* produces something actionable
-
-👉 This is when your tool becomes *interesting*, not just a demo
+* What should be improved?
+  * prompt
+  * document structure
+  * retrieval
+  * ignore (acceptable limitation)
 
 ***
 
-# 🧠 8. Subtle but important improvement
+# 🧪 Example Entry
 
-Right now your data = README files.
+## Test case: Identify tech usage across projects
 
-👉 Add this at the top of each:
-
-```markdown
-# Project: microsteps-ai
-
-## Type
-CLI tool
-
-## Purpose
-Reduce friction when starting tasks
-
-## Stack
-Python, Ollama
-
-## Status
-Active
-```
-
-This massively improves:
-
-* listing
-* filtering
-* answering
-
-***
-
-# ⚡ 9. What will “click” when you build this
-
-These moments will happen:
-
-### Moment 1:
-
-> “Why didn’t it list all my projects?”
-
-→ retrieval issue
-
-***
-
-### Moment 2:
-
-> “It hallucinated a project...”
-
-→ context problem
-
-***
-
-### Moment 3:
-
-> “Oh… this is NOT a database”
-
-→ 🔥 RAG understanding unlocked
-
-***
-
-# 💡 10. Future evolution (without overengineering)
-
-Once you have V1 working, natural upgrades:
-
-* ✅ metadata (project type, tech)
-* ✅ better prompts
-* ✅ caching index
-* ✅ CLI UX improvements (colors — you care about this)
-
-***
-
-# ✅ Final verdict
-
-Your plan is:
-
-✅ Simple enough to build quickly  
-✅ Complex enough to teach real RAG  
-✅ Personally meaningful  
-✅ Extendable into a real tool
-
-***
-
-# 🚀 My recommendation (very concrete)
-
-Start with:
+**Query**
 
 ```
-projects-ai ask "..."
+Which projects use Ollama?
 ```
 
-Don't build anything else yet.
+**Result**
 
-Ship this:
+```
+The system mentioned only one project or gave a vague answer.
+```
 
-👉 “Ask questions about my projects”
+**Expected behavior**
 
-Then evolve.
+* Should list:
+  * skim-job-ai
+  * fastapi-ollama-template
+
+**Observed issues**
+
+* Did not aggregate across documents
+* Missed structured "Tech Stack" sections
+
+**Quality assessment**
+
+* Correctness: ⚠️
+* Completeness: ❌
+* Usefulness: ⚠️
+
+**Type of question**
+
+* [ ] Single-project
+* [x] Multi-project
+* [x] Aggregation
+* [ ] Reflection
+
+**Hypothesis**
+
+* Retrieval may only return top chunks
+* Model not explicitly instructed to extract & compare
+
+**Next step**
+
+* Improve prompt to:
+  * explicitly extract tech usage
+  * encourage listing items across documents
 
 ***
 
-# 👀 If you want next step
-
-I can help you:
-
-✅ design a **clean CLI UX (your style: colors + structure)**  
-✅ write a **minimal `cli.py` + `rag.py` scaffold**  
-✅ craft a **prompt that makes answers sharp and useful**
-
-***
-
-👉 Do you want me to generate a **minimal but clean starter codebase** (like your fastapi-ollama-template style, but for CLI + RAG)?
