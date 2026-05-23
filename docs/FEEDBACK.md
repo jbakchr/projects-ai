@@ -18,6 +18,7 @@ this is about **learning through real usage**.
 ## 🧠 Evaluation mindset
 
 RAG systems are:
+
 - probabilistic
 - context-dependent
 - sensitive to structure and prompts
@@ -36,6 +37,7 @@ So instead of expecting correctness, we focus on:
 ## Test case: <short title>
 
 **Query**
+
 ```
 <your question>
 ```
@@ -48,43 +50,43 @@ So instead of expecting correctness, we focus on:
 
 **Expected behavior**
 
-* What SHOULD the system have done?
+- What SHOULD the system have done?
 
 **Observed issues**
 
-* What went wrong?
-* Be concrete (missing info, vague answer, wrong reasoning)
+- What went wrong?
+- Be concrete (missing info, vague answer, wrong reasoning)
 
 **Quality assessment**
 
-* Correctness: ✅ / ⚠️ / ❌
-* Completeness: ✅ / ⚠️ / ❌
-* Usefulness: ✅ / ⚠️ / ❌
+- Correctness: ✅ / ⚠️ / ❌
+- Completeness: ✅ / ⚠️ / ❌
+- Usefulness: ✅ / ⚠️ / ❌
 
 **Type of question**
 
-* [ ] Single-project (easy)
-* [ ] Multi-project (cross-doc reasoning)
-* [ ] Aggregation (list/count)
-* [ ] Reflection (patterns / suggestions)
+- [ ] Single-project (easy)
+- [ ] Multi-project (cross-doc reasoning)
+- [ ] Aggregation (list/count)
+- [ ] Reflection (patterns / suggestions)
 
 **Hypothesis (why it failed or succeeded)**
 
-* Retrieval issue?
-* Prompt too weak?
-* Document structure unclear?
+- Retrieval issue?
+- Prompt too weak?
+- Document structure unclear?
 
 **Next step**
 
-* What should be improved?
-  * prompt
-  * document structure
-  * retrieval
-  * ignore (acceptable limitation)
+- What should be improved?
+  - prompt
+  - document structure
+  - retrieval
+  - ignore (acceptable limitation)
 
-***
+---
 
-# 🧪 Example Entry
+# 🧪 Entries
 
 ## Test case: Identify tech usage across projects
 
@@ -102,38 +104,88 @@ The system mentioned only one project or gave a vague answer.
 
 **Expected behavior**
 
-* Should list:
-  * skim-job-ai
-  * fastapi-ollama-template
+- Should list:
+  - skim-job-ai
+  - fastapi-ollama-template
 
 **Observed issues**
 
-* Did not aggregate across documents
-* Missed structured "Tech Stack" sections
+- Did not aggregate across documents
+- Missed structured "Tech Stack" sections
 
 **Quality assessment**
 
-* Correctness: ⚠️
-* Completeness: ❌
-* Usefulness: ⚠️
+- Correctness: ⚠️
+- Completeness: ❌
+- Usefulness: ⚠️
 
 **Type of question**
 
-* [ ] Single-project
-* [x] Multi-project
-* [x] Aggregation
-* [ ] Reflection
+- [ ] Single-project
+- [x] Multi-project
+- [x] Aggregation
+- [ ] Reflection
 
 **Hypothesis**
 
-* Retrieval may only return top chunks
-* Model not explicitly instructed to extract & compare
+- Retrieval may only return top chunks
+- Model not explicitly instructed to extract & compare
 
 **Next step**
 
-* Improve prompt to:
-  * explicitly extract tech usage
-  * encourage listing items across documents
+- Improve prompt to:
+  - explicitly extract tech usage
+  - encourage listing items across documents
 
-***
+---
 
+## Test case: Bulleted output for longer answers
+
+**Query**
+
+```
+"What is skim-job-ai about?"
+```
+
+**Result**
+
+```
+"A CLI tool that helps you instantly decide whether a job posting is worth your attention by providing a compressed summary, key requirements, and a quick verdict so you can decide in seconds."
+```
+
+**Expected behavior**
+
+Since the answer was fairly long - though very good - it could have given an answer like this:
+
+"A CLI tool that helps you instantly decide whether a job posting is worth your attention by providing
+
+- a compressed summary
+- key requirements
+- a quick verdict so you can decide in seconds."
+
+**Observed issues**
+
+- Nothing really went wrong
+- Could've provided a better overview of project using bullet points
+
+**Quality assessment**
+
+- Correctness: ✅
+- Completeness: ✅
+- Usefulness: ⚠️
+
+**Type of question**
+
+- [x] Single-project (easy)
+- [ ] Multi-project (cross-doc reasoning)
+- [ ] Aggregation (list/count)
+- [ ] Reflection (patterns / suggestions)
+
+**Hypothesis (why it failed or succeeded)**
+
+- Prompt might have been too weak or unstructured to provide the answer in format I would really have like (i.e. given me a better overview)
+
+**Next step**
+
+- What should be improved?
+  - prompt
