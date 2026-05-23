@@ -9,7 +9,7 @@ from llama_index.embeddings.ollama import OllamaEmbedding
 def configure_models():
     """Configure LLM and embedding model (Ollama)"""
     Settings.llm = Ollama(
-        model="llama3.1:8b",
+        model="llama3",
         request_timeout=120.0,
     )
 

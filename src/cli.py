@@ -29,7 +29,7 @@ def main():
         print("\n🤖 Answer:")
         response = query_projects(args.query)
         print(response)
-        print("\n")
+        print()
 
 
 if __name__ == "__main__":
