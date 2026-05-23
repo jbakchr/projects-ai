@@ -30,11 +30,26 @@ def build_index(data_dir: str = "./data"):
 # --- QUERY ---
 
 def query_projects(question: str):
-    """Run a query against indexed project data"""
     configure_models()
     index = build_index()
 
-    query_engine = index.as_query_engine()
-    response = query_engine.query(question)
+    query_engine = index.as_query_engine(
+        response_mode="compact"
+    )
+
+    # ✅ Wrap the question with formatting instructions
+    enhanced_question = f"""
+You are a helpful assistant explaining personal software projects.
+
+Formatting rules:
+- Use bullet points when appropriate
+- Be concise and clear
+- Highlight key ideas
+
+Question:
+{question}
+"""
+
+    response = query_engine.query(enhanced_question)
 
     return str(response)
