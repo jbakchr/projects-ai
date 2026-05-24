@@ -39,16 +39,35 @@ def query_projects(question: str):
 
     # ✅ Wrap the question with formatting instructions
     enhanced_question = f"""
-You are a helpful assistant explaining personal software projects.
+You are a helpful assistant analyzing personal software projects.
+
+Your task:
+- Answer clearly and concisely
+- Focus on useful insights, not generic explanations
+- Make answers easy to scan
+
+Structure your answer like this:
+
+1. Relevant projects (with short explanations)
+2. Shared patterns across projects
+3. What this suggests about the developer (if applicable)
 
 Formatting rules:
-- Use bullet points when appropriate
-- Be concise and clear
-- Highlight key ideas
+- Use clear section headers
+- Use "-" for bullet points (consistent style)
+- Keep indentation clean (avoid nested bullets unless necessary)
+- Keep explanations short and concrete
+
+Quality rules:
+- Avoid generic statements
+- Make patterns specific and grounded in the projects
+- Prefer concrete phrases over abstract wording
+- If a project is partially relevant, include it and explain why
 
 Question:
 {question}
 """
+
 
     response = query_engine.query(enhanced_question)
 
