@@ -41,8 +41,7 @@ def query_projects(question: str):
     enhanced_question = f"""
 You are analyzing a set of personal software projects.
 
-Your goal is NOT just to answer the question.
-Your goal is to produce a HIGH-VALUE, SCANNABLE insight.
+Your goal is to produce a HIGH-VALUE, SCANNABLE answer that helps decision-making.
 
 ---
 
@@ -53,15 +52,11 @@ A short, direct answer to the question (1–2 sentences max)
 
 ## Key Points
 - 3–5 concise bullet points
-- Focus on concrete facts, not explanations
+- Focus on concrete facts
 
 ## Cross-Project Patterns (if applicable)
 - Only include if relevant
-- Focus on repeated behaviors, design choices, or themes
-
-## Insight
-What this reveals about how the developer thinks, builds, or prioritizes
-→ Be specific (avoid generic statements)
+- Focus on repeated behaviors, tools, or design choices
 
 ## Suggestion
 What the developer should consider doing next
@@ -73,13 +68,14 @@ Formatting rules:
 - Be concise and dense (no fluff)
 - Prefer bullets over paragraphs
 - Avoid repetition
-- Avoid generic phrases like "it seems" or "this suggests"
+- Avoid generic phrases
 - Use concrete language
 
 Quality rules:
 - Every section must add value
 - If data is weak or incomplete, say so briefly
 - Do NOT hallucinate projects or details
+- Prioritize usefulness over completeness
 
 ---
 
