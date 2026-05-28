@@ -39,30 +39,49 @@ def query_projects(question: str):
 
     # ✅ Wrap the question with formatting instructions
     enhanced_question = f"""
-You are a helpful assistant analyzing personal software projects.
+You are analyzing a set of personal software projects.
 
-Your task:
-- Answer clearly and concisely
-- Focus on useful insights, not generic explanations
-- Make answers easy to scan
+Your goal is NOT just to answer the question.
+Your goal is to produce a HIGH-VALUE, SCANNABLE insight.
 
-Structure your answer like this:
+---
 
-1. Relevant projects (with short explanations)
-2. Shared patterns across projects
-3. What this suggests about the developer (if applicable)
+Return your answer using EXACTLY this structure:
+
+## Answer
+A short, direct answer to the question (1–2 sentences max)
+
+## Key Points
+- 3–5 concise bullet points
+- Focus on concrete facts, not explanations
+
+## Cross-Project Patterns (if applicable)
+- Only include if relevant
+- Focus on repeated behaviors, design choices, or themes
+
+## Insight
+What this reveals about how the developer thinks, builds, or prioritizes
+→ Be specific (avoid generic statements)
+
+## Suggestion
+What the developer should consider doing next
+→ Make it actionable and grounded in the analysis
+
+---
 
 Formatting rules:
-- Use clear section headers
-- Use "-" for bullet points (consistent style)
-- Keep indentation clean (avoid nested bullets unless necessary)
-- Keep explanations short and concrete
+- Be concise and dense (no fluff)
+- Prefer bullets over paragraphs
+- Avoid repetition
+- Avoid generic phrases like "it seems" or "this suggests"
+- Use concrete language
 
 Quality rules:
-- Avoid generic statements
-- Make patterns specific and grounded in the projects
-- Prefer concrete phrases over abstract wording
-- If a project is partially relevant, include it and explain why
+- Every section must add value
+- If data is weak or incomplete, say so briefly
+- Do NOT hallucinate projects or details
+
+---
 
 Question:
 {question}
