@@ -1,38 +1,89 @@
 # projects-ai
 
-A simple CLI tool that lets you **ask questions about your own projects** using local AI (Ollama) + RAG.
+A CLI tool that helps you **turn your past projects into new ideas** using local AI.
+
+> Not just search.  
+> Not just answers.  
+> 👉 A tool for _thinking and deciding what to build next_
 
 ---
 
 ## 💡 Why this exists
 
-I build a lot of small tools and projects. Over time, I forget:
+I build many small tools and projects.
 
-- What each project actually does
-- Patterns in what I build
-- Ideas I’ve already explored
+Over time, I forget:
 
-This tool turns my past projects (README files) into a **queryable knowledge base**.
+- what I’ve already built
+- patterns in how I build
+- which ideas I’ve already explored
 
-Instead of searching manually, I can ask:
+This tool turns my project READMEs into a:
 
-```bash
-projects-ai ask "What is microsteps-ai about?"
-projects-ai ask "What kind of tools do I tend to build?"
-projects-ai ask "What should I build next based on my past projects?"
+👉 **thinking interface**
+
+So instead of searching manually, I can ask:
+
+```
+projects-ai ask "What should I build next?"
+projects-ai ask "What patterns am I repeating?"
+projects-ai ask "What am I not exploring yet?"
 ```
 
 ---
 
-## 🧠 What it does
+## 🧠 What this actually does
 
-- Loads project README files
-- Builds a vector index (RAG)
-- Uses a local LLM (Ollama)
-- Answers questions based on your own data
+- Loads project READMEs
+- Uses RAG (LlamaIndex + Ollama)
+- Generates structured, **high-signal outputs**
 
-👉 Think of it as:  
-**"Search + reflection engine for your personal projects"**
+But the real value is not retrieval.
+
+👉 The real value is:
+
+- generating ideas
+- extracting patterns
+- helping me move forward
+
+---
+
+## 🔥 Core idea
+
+This tool is designed for:
+
+👉 **momentum**
+
+Success is not:
+
+- “did it answer correctly?”
+
+Success is:
+
+- Did I get a useful idea?
+- Did it trigger action?
+- Did it help me decide faster?
+
+---
+
+## 🧪 Example output
+
+```
+## Answer
+Focus on tools that reduce decision friction in everyday workflows.
+
+## Key Points
+- Your projects consistently simplify complex inputs into fast decisions
+- You prefer CLI-first, low-friction tools
+
+## Suggestion
+- decision-memory CLI: log decisions + reasoning → query later “why did I choose this?”
+- ArticleLens: visualize article structure → quickly understand main ideas without reading everything
+```
+
+👉 Fast to read  
+👉 Actionable  
+👉 Meant to trigger thinking
 
 ---
 
@@ -40,8 +91,8 @@ projects-ai ask "What should I build next based on my past projects?"
 
 - Python
 - LlamaIndex (RAG orchestration)
-- Ollama (local LLM)
-- Markdown (data source)
+- Ollama (local LLMs)
+- Markdown-based data
 
 ---
 
@@ -49,14 +100,10 @@ projects-ai ask "What should I build next based on my past projects?"
 
 ```
 projects-ai/
-  data/                # Your project README files
-    microsteps-ai.md
-    drdk-ai-summarizer.md
-
+  data/               # Project READMEs
   src/
-    rag.py             # RAG setup and query logic
-    cli.py             # CLI interface
-
+    rag.py            # Index + query logic
+    cli.py            # CLI interface
   README.md
 ```
 
@@ -66,21 +113,16 @@ projects-ai/
 
 ### 1. Add your data
 
-Put your project README files into:
+Put project README files in:
 
 ```
 ./data/
 ```
 
-Example:
+Recommended structure:
 
-- `microsteps-ai.md`
-- `drdk-ai-summarizer.md`
-
-Each file should ideally include:
-
-```markdown
-# Project: microsteps-ai
+```md
+# Project: name
 
 ## Description
 
@@ -99,7 +141,7 @@ Each file should ideally include:
 
 ### 2. Install dependencies
 
-```bash
+```
 pip install llama-index llama-index-llms-ollama llama-index-embeddings-ollama
 ```
 
@@ -107,95 +149,124 @@ pip install llama-index llama-index-llms-ollama llama-index-embeddings-ollama
 
 ### 3. Start Ollama
 
-Make sure you have:
-
-```bash
+```
 ollama pull llama3.1:8b
 ollama pull nomic-embed-text
 ```
 
 ---
 
-### 4. Run the CLI
+### 4. Ask questions
 
-```bash
-projects-ai ask "What is microsteps-ai about?"
+```
+projects-ai ask "What should I build next?"
 ```
 
 ---
 
-## 🧪 Example questions
+## 🧠 How it works (simple)
 
-General:
+```
+CLI → RAG → Prompt → Structured output → Ideas
+```
 
-- "What projects have I built?"
-- "What kind of tools do I tend to create?"
+The key is not the architecture.
 
-Specific:
-
-- "What is microsteps-ai about?"
-- "Which projects use Python?"
-
-Reflective (🔥 best use case):
-
-- "What should I build next?"
-- "What patterns are common across my projects?"
+👉 The key is the **prompt + output design**
 
 ---
 
-## ⚠️ Known limitations
+## 🔍 Key learnings so far
 
-This project is intentionally simple.
-
-RAG is:
-
-- ✅ Good at summarizing and reasoning
-- ⚠️ Less reliable for exact counting or listing
-
-Example:
-
-- "What is X about?" → great ✅
-- "How many projects do I have?" → less reliable ⚠️
-
-This is part of the learning.
+- Structured READMEs massively improve output quality
+- Output format matters more than retrieval tweaks
+- Short, dense answers > long explanations
+- The best outputs:
+  - are easy to scan
+  - feel slightly surprising
+  - trigger action
 
 ---
 
-## 🗺️ Roadmap
+## ⚠️ Limitations
 
-### ✅ V1 (current)
-
-- `projects-ai ask "..."`
-
-### 🔜 V2
-
-- `projects-ai list` → list project names
-- `projects-ai count` → count projects
-- `projects-ai suggest` → better idea generation
-
-### 🔮 Future ideas
-
-- Metadata (tech, status, type)
-- Better prompts
-- CLI UX improvements (colors, formatting)
-- Integration with real GitHub repos
+- RAG ≠ database
+  - aggregation (counting/listing) is weak
+- Insights are based only on README data
+- Suggestions can still be:
+  - safe
+  - pattern-repeating (improving over time)
 
 ---
 
-## 🎯 Purpose of this project
+## 🧭 Current focus
 
-This is both:
+Improving:
 
-1. A **learning project** for understanding RAG systems
-2. A **practical tool** for reflecting on past work
+- ✅ output clarity (mostly solved)
+- 🔄 idea quality (ongoing)
+- 🔄 making suggestions more:
+  - specific
+  - personal
+  - actionable
 
 ---
 
-## 🧠 Key insight
+## 🔮 Future directions
 
-This project helps answer:
+- Include:
+  - FEEDBACK.md
+  - project context files
+- Add:
+  - better idea generation
+  - stronger pattern extraction
+- Possibly:
+  - “first step” suggestions (micro-actions)
 
-> "What can I learn from the things I've already built?"
+---
+
+## 🚫 Non-goals
+
+- Not a general knowledge base
+- Not a production search system
+- Not overengineered
+
+Keep it:
+
+👉 simple  
+👉 fast  
+👉 useful
+
+---
+
+## 🧠 What makes this interesting
+
+This is not just:
+
+- a RAG project
+- a CLI tool
+
+This is:
+
+👉 a **personal thinking system**
+
+A tool that helps turn:
+
+```
+past work → future direction
+```
+
+---
+
+## ✅ Development philosophy
+
+```
+Ask → Observe → Log → Improve → Repeat
+```
+
+The most important thing is:
+
+👉 real usage → real feedback
 
 ---
 
