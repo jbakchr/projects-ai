@@ -1,25 +1,29 @@
 # projects-ai – Project Context
 
+---
+
 ## 🧠 What this project is
 
 projects-ai is a CLI tool that lets me ask questions about my own software projects using AI (RAG + local LLMs).
 
-It turns my project READMEs into a **queryable knowledge base**.
+It turns my project READMEs into a:
+
+👉 **thinking and idea-generation interface**
 
 The goal is NOT just to retrieve information.  
 The goal is:
 
-👉 to generate **insights about how I build and think**
+👉 to generate **useful ideas and next actions based on past work**
 
 ---
 
 ## 🎯 Core philosophy
 
-This project focuses on:
+This project is about:
 
-- reducing friction in understanding my own work
-- extracting patterns across projects
-- turning past projects into usable insights
+- reducing friction in thinking about my own work
+- extracting patterns _only if they help decision-making_
+- turning past projects into **forward momentum**
 
 Success is NOT:
 
@@ -27,9 +31,31 @@ Success is NOT:
 
 Success is:
 
-- Did I gain insight?
-- Did I understand something new about my projects?
-- Did it help me think or decide faster?
+- Did it give me an idea I can build?
+- Did it make me want to take action?
+- Did it help me decide faster?
+
+---
+
+## 🔥 Key shift (important)
+
+The project has evolved from:
+
+```
+RAG → answer → insight
+```
+
+To:
+
+```
+RAG → structured output → suggestions → action
+```
+
+This is a shift from:
+
+👉 a query tool  
+to  
+👉 a **momentum engine**
 
 ---
 
@@ -38,214 +64,216 @@ Success is:
 The system currently works as:
 
 ```
-
-CLI → RAG → LLM → structured answer
-
+CLI → RAG → Prompt → Structured output
 ```
 
-Key characteristics:
+Current output structure:
 
-- Uses structured project READMEs in `/data`
-- Uses LlamaIndex + Ollama
-- Answers both:
-  - single-project questions
-  - cross-project pattern questions
-- Prompt-driven structure (not hardcoded logic)
+```
+## Answer
+(short directional statement)
+
+## Key Points
+(1–2 bullets that justify direction)
+
+## Suggestion
+(1–2 concise, concrete project ideas)
+```
+
+Each suggestion is:
+
+```
+- <name>: <what it does> → <why it matters>
+```
+
+Key constraints:
+
+- Short, scannable output
+- At least one idea should feel slightly surprising
+- Ideas must be:
+  - specific
+  - buildable
+  - not repetitions of past projects
 
 ---
 
-## 🔍 Key insights so far
+## ✅ What is working well now
 
-- Structure in README files greatly improves RAG quality
-- Cross-project questions are where real value emerges
-- Prompt design directly affects:
-  - clarity
-  - structure
-  - usefulness of answers
+- Outputs are fast to read (high signal density)
+- Suggestions feel:
+  - relevant
+  - sometimes genuinely interesting
+- The system often triggers:
+  👉 “I want to build something”
 
-Biggest limitation:
-
-👉 RAG is not a database
-
-- aggregation (count/list) is weak
-- coverage is sometimes incomplete
+This is the most important success signal.
 
 ---
 
-## 🧭 Intended direction (high level)
+## ⚠️ Current limitations
 
-The project evolves in layers:
-
-```
-
-Search → Answers → Structure → Insights → Reflection
-
-```
-
-The goal is NOT complexity  
-The goal is:
-
-- better insight density
-- better thinking support
-- more useful output
+- Suggestions can still be:
+  - slightly safe
+  - pattern-repeating
+- Limited by:
+  - README-only data
+- RAG limitations:
+  - weak aggregation (counting/listing)
+  - incomplete coverage
 
 ---
 
-## 🧱 Near-term evolution ideas
+## 🧠 Key learnings so far
 
-## 1. Output quality (current focus)
+### 1. Output design > retrieval improvements
 
-- improve structure and scan-ability
-- reduce verbosity → increase signal
-- make outputs feel like “decision dashboards”
+Improving the prompt and structure created far more value than improving retrieval.
 
----
+### 2. Verbosity = friction
 
-## 2. Retrieval improvements
+Long explanations significantly reduce usefulness in a CLI context.
 
-- better multi-document coverage
-- reduce missed relevant projects
-- improve pattern extraction consistency
+### 3. Structure enables thinking
 
----
+A consistent format makes answers easier to:
 
-## 3. CLI UX
+- scan
+- compare
+- act on
 
-- spinner ✅ (already added)
-- cleaner output formatting
-- clearer visual hierarchy
+### 4. Suggestions are the highest-value component
 
----
+- “Insight” sections were low value → removed
+- Suggestions create momentum → primary focus
 
-## 🔄 Structural shift (important)
+### 5. Constraints drive quality
 
-From:
+Adding constraints like:
 
-```
+- “no repetition”
+- “must be surprising”
 
-RAG → answer
-
-```
-
-To:
-
-```
-
-RAG → structured answer → insight extraction → reflection
-
-```
-
-This is the shift from:
-
-👉 a query tool  
-to  
-👉 a thinking interface
+significantly improves output quality
 
 ---
 
-## 🔮 Future evolution
+## 🧭 Current focus
 
-## Metadata layer
+Focus is now on:
 
-- add structured metadata to projects
-- enable more precise querying
+- improving idea quality (not structure)
+- making suggestions:
+  - more specific
+  - more personal
+  - more interesting
+- maintaining:
+  - minimal output
+  - high signal density
 
-## Expanded data sources
+---
 
-- include FEEDBACK.md
-- include personal notes / ideas
-- include project context files
+## 🧱 What we are NOT optimizing right now
 
-## Suggestion capability
+- Retrieval quality (good enough for now)
+- Metadata layers
+- Complex multi-step pipelines
+- UI complexity
 
-- “what should I build next?”
-- “what patterns am I repeating?”
+👉 Keep the system simple
+
+---
+
+## 🔮 Likely next evolution
+
+### Better suggestions
+
+- more opinionated
+- more “this is actually worth building”
+
+### Micro-action layer (possible)
+
+- “first step” suggestions
+- align with microsteps philosophy
+
+### Expanded data sources
+
+- FEEDBACK.md
+- project context files
+- personal notes
 
 ---
 
 ## 🚫 Non-goals
 
 - Not a full knowledge base system
-- Not a production search engine
-- Not a complex AI platform
+- Not a production-grade RAG system
 - Not overengineered
+- Not focused on completeness
 
 Keep it:
 
 👉 simple  
-👉 personal  
-👉 useful
-
----
-
-## ✅ What makes this project interesting
-
-This is not:
-
-- just a RAG system
-- just a CLI tool
-
-This is:
-
-👉 a system that helps me **understand my own work better**
-
-It combines:
-
-- retrieval
-- synthesis
-- reflection
+👉 fast  
+👉 actionable
 
 ---
 
 ## 🧠 Why this matters (personally)
 
-This project helps me:
+This tool helps me:
 
-- see patterns in what I build
-- understand my design philosophy
-- make better decisions about future projects
+- turn past projects into new ideas
+- avoid repeating the same patterns blindly
+- build things I actually find interesting
+- start faster (reduce friction to action)
 
 It is both:
 
 - a technical learning project
-- a personal thinking tool
+- a **personal thinking + action tool**
 
 ---
 
 ## 🔄 Feedback-driven development
 
-This project evolves through:
+The system evolves through:
 
 ```
-
-Ask → Observe → Log (FEEDBACK.md) → Improve → Repeat
-
+Ask → Observe → Log → Improve → Repeat
 ```
 
-The most important file is:
+The most important signal is:
 
-👉 FEEDBACK.md
+👉 “Did this make me want to build something?”
 
 ---
 
-## 🚀 What I want help with in a new chat
+## 🚀 What I want help with in new chats
 
-- Improving answer quality (structure + insight density)
-- Making outputs more useful and scannable
-- Enhancing cross-project reasoning
-- Keeping everything minimal (no overengineering)
+- Improving idea quality (not verbosity)
+- Making suggestions more:
+  - surprising
+  - specific
+  - actionable
+- Maintaining minimal output
 - Iterating step-by-step based on real usage
+- Avoiding overengineering at all costs
 
 ---
 
-# 💡 How to use this in a new chat
+## 💡 How to use this in a new chat
 
-When starting a new chat, say:
+When starting a new chat:
 
+```
 I’m working on this project:
 
 [paste PROJECT_CONTEXT.md]
 
 I want help improving it step-by-step without overengineering.
+
 Let’s continue from here:
 [describe current issue or goal]
+```
+
+---
