@@ -51,16 +51,30 @@ Return your answer using EXACTLY this structure:
 A short, direct answer to the question (1–2 sentences max)
 
 ## Key Points
-- 3–5 concise bullet points
-- Focus on concrete facts
-
-## Cross-Project Patterns (if applicable)
-- Only include if relevant
-- Focus on repeated behaviors, tools, or design choices
+- Max 2 bullets
+- Only include points that directly influence the suggestion
 
 ## Suggestion
-What the developer should consider doing next
-→ Make it actionable and grounded in the analysis
+Propose 1–2 specific project ideas.
+
+Each idea must be formatted like this:
+- <Project name>: <what it does> → <why it's useful or interesting>
+
+Additional constraints:
+- Must NOT repeat or closely resemble existing projects
+- Must introduce a clear twist, improvement, or new angle
+- Must combine or extend patterns in a new way
+- Must be specific and buildable as a small tool
+- At least one suggestion should feel slightly surprising or non-obvious (something the developer likely hasn’t already considered)
+
+Avoid:
+- Rephrasing existing ideas
+- Minor variations of current projects
+- Generic "summarizer" or "filtering tool" ideas
+
+Prefer:
+- New combinations of existing patterns
+- Slightly surprising but practical ideas
 
 ---
 
@@ -70,18 +84,21 @@ Formatting rules:
 - Avoid repetition
 - Avoid generic phrases
 - Use concrete language
+- ALWAYS use "-" for bullet points (never "*")
 
 Quality rules:
 - Every section must add value
 - If data is weak or incomplete, say so briefly
 - Do NOT hallucinate projects or details
 - Prioritize usefulness over completeness
+- If the question asks for ideas, prioritize originality over safety
 
 ---
 
 Question:
 {question}
 """
+
 
 
     response = query_engine.query(enhanced_question)
