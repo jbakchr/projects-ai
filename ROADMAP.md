@@ -1,329 +1,265 @@
 # ROADMAP.md
 
+---
+
 ## 🎯 Vision
 
-projects-ai is a CLI tool that turns your past projects into a **queryable knowledge base**.
+projects-ai is a CLI tool that turns past projects into:
 
-The long-term goal is:
+👉 **new ideas and forward momentum**
 
-👉 Turn scattered projects into **structured insight about how you think, build, and decide**
+The goal is not to build a knowledge system.  
+The goal is:
+
+👉 to help decide what to build next — quickly
 
 ---
 
 ## 🧠 Core Idea
 
-This is not just a RAG demo.
+This is not just a RAG tool.
 
-It is a tool for:
+It is:
 
-- understanding your own work
-- identifying patterns across projects
-- generating insights from past decisions
+👉 a **thinking + idea generation interface**
 
-👉 A “thinking interface” over your own projects
+It turns:
+
+```
+past projects → patterns → new ideas → action
+```
 
 ---
 
-# 🚀 Development Philosophy
+## 🚀 Development philosophy
 
-- Start simple → evolve gradually  
-- Favor real usage over theoretical design  
-- Improve through feedback (`FEEDBACK.md`)  
-- Avoid overengineering  
+- Start simple → iterate
+- Optimize for real usage (not theory)
+- Improve through FEEDBACK.md
+- Avoid overengineering at all costs
 
----
+Prefer:
 
-# ✅ Current State (V1)
-
-### Working features
-
-- CLI interface:
-```
-
-projects-ai ask "..."
-
-````
-
-- RAG over structured project READMEs
-
-- Cross-project reasoning:
-- Identify relevant projects
-- Extract shared patterns
-- Suggest developer tendencies
-
-- Basic structured output:
-- Relevant projects
-- Shared patterns
-- Developer insights
+- faster output
+- sharper ideas
+- less complexity
 
 ---
 
-# 🔜 Next Steps (V2 — Output Quality & UX)
+## ✅ Current State (V2 — Working & Valuable)
 
-## 🎯 Goal
-Make answers **more useful, scannable, and insight-dense**
+### What works now
 
-### Improvements
+- CLI:
 
-- Better output structure (clean sections)
-- Consistent formatting (bullets, hierarchy)
-- Reduce verbosity → increase signal
-- Improve pattern specificity (less generic LLM phrasing)
+  ```
+  projects-ai ask "..."
+  ```
+
+- RAG over project READMEs
+
+- Structured, high-signal output:
+
+```
+## Answer
+(short directional statement)
+
+## Key Points
+(1–2 bullets)
+
+## Suggestion
+(1–2 concise, concrete ideas)
+```
+
+- Suggestions are:
+  - concise
+  - buildable
+  - sometimes surprising ✅
 
 ---
 
-## 🖥️ CLI UX Improvements
+## 🔑 Key breakthrough
 
-- Spinner (✅ done)
-- Cleaner output layout
-- Optional emphasis (headers, spacing)
+The project has shifted from:
+
+```
+RAG → insight → understanding
+```
+
+To:
+
+```
+RAG → suggestion → action
+```
+
+👉 This is now a **momentum engine**, not an insight tool
 
 ---
 
-# 🔜 V3 — Retrieval & Accuracy
+## 🧭 Current focus (most important)
 
-## 🎯 Goal
-Improve correctness for multi-project questions
+### 🎯 Improve idea quality
 
-### Improvements
+Focus on making suggestions:
 
-- Better handling of:
-- “list all projects”
-- “how many projects”
-- More consistent cross-document coverage
-- Reduce missed relevant projects
+- more specific
+- more personal
+- more interesting
+- less repetitive
+- more “this is worth building”
 
----
+NOT focusing on:
 
-## Potential approaches
-
-- Better prompting for aggregation
-- Metadata-aware retrieval (later)
+- retrieval
+- metadata
+- system complexity
 
 ---
 
-# 🔮 V4 — Metadata & Structure
+## 🔜 Next Steps (short-term, practical)
 
-## 🎯 Goal
-Make the system more “queryable” like a database
+### 1. Suggestion quality (primary work)
 
-### Add metadata to documents:
+- reduce “safe” ideas
+- increase:
+  - novelty
+  - specificity
+  - personality
 
-```python
-{
-"project": "skim-job-ai",
-"type": "cli tool",
-"focus": "decision-making",
-"tech": ["Python", "Ollama"]
-}
-````
+---
 
-***
+### 2. Output sharpness
 
-### Enable queries like:
+- maintain minimal format
+- ensure:
+  - fast scan
+  - no redundancy
+- possibly refine:
+  - Answer section (make more punchy)
 
-* “Which projects use Ollama?”
-* “Which tools are browser-based?”
-* “Which projects focus on learning vs decision-making?”
+---
 
-***
+### 3. Usage-driven improvement
 
-# 🔮 V5 — Insight Layer (High Value)
+- run real queries
+- log in FEEDBACK.md:
+  - which ideas are interesting
+  - which are ignored
+  - where it feels weak
 
-## 🎯 Goal
+👉 Let real usage drive evolution
 
-Go beyond answers → generate meaningful insights
+---
 
-### Examples
+## 🔮 Next evolutions (when needed, not now)
 
-* “What themes exist across my projects?”
-* “How has my thinking evolved?”
-* “What should I build next?”
+### Micro-step layer (highly aligned)
 
-***
-
-### Improve:
-
-* pattern extraction
-* developer profiling
-* suggestion generation
-
-***
-
-# 🔮 V6 — Persistence & Performance
-
-## 🎯 Goal
-
-Make the tool faster and more practical
-
-### Improvements
-
-* Persist index (avoid rebuilding on each query)
-* Cache embeddings
-* Faster response times
-
-***
-
-# 🔮 V7 — Expanded Data Sources
-
-## 🎯 Goal
-
-Move beyond README-only knowledge
-
-### Add:
-
-* `FEEDBACK.md` (learning signals)
-* notes / ideas
-* experimental logs
-* project context files
-
-***
-
-### Result
-
-👉 A richer, more personal knowledge base
-
-***
-
-# 🔮 V8 — CLI as Daily Tool
-
-## 🎯 Goal
-
-Make this something you actually use regularly
-
-### Possible commands:
+Add:
 
 ```
-projects-ai ask "..."
-projects-ai list
-projects-ai count
-projects-ai suggest
+- Idea
+- First step
 ```
 
-***
+Goal:
 
-### Example
+👉 reduce friction from idea → action
+
+---
+
+### Idea depth (optional)
+
+If needed, slightly expand ideas _without adding verbosity_:
+
+- keep 1-line format
+- but implicitly include:
+  - what
+  - why
+  - hint of how
+
+---
+
+### Better personalization
+
+- make ideas feel more “you”
+- lean more into:
+  - CLI tools
+  - personal workflows
+  - friction reduction
+
+---
+
+## 🔮 Later stages (only if needed)
+
+### Expanded data sources
+
+- FEEDBACK.md
+- notes / ideas
+- project context files
+
+👉 goal: better grounding → better suggestions
+
+---
+
+### Retrieval improvements (low priority)
+
+- improve coverage across projects
+- reduce missed context
+
+👉 only relevant if output quality plateaus
+
+---
+
+### Performance
+
+- persist index
+- reduce rebuild time
+
+👉 only if usage becomes frequent
+
+---
+
+## 🚫 Non-goals
+
+- Not a full knowledge base system
+- Not a production RAG system
+- Not focused on completeness
+- Not complex or overengineered
+
+Keep it:
+
+👉 simple  
+👉 fast  
+👉 actionable
+
+---
+
+## 🔁 Feedback loop (core engine)
 
 ```
-projects-ai suggest "What should I build next?"
+Ask → Observe → Log → Improve → Repeat
 ```
 
-***
+Key question:
 
-# 🔮 V9 — Reflection & Self-Understanding
+👉 “Did this make me want to build something?”
 
-## 🎯 Goal
+If yes → keep direction  
+If no → adjust prompt, not system
 
-Use the system as a reflection tool
+---
 
-### Example questions:
-
-* “What motivates my projects?”
-* “What problems do I keep solving?”
-* “Where do I focus my effort?”
-
-***
-
-👉 This is where the project becomes:
-
-> not a tool → but a **mirror**
-
-***
-
-# ⚠️ Non-Goals (Important)
-
-This project is intentionally NOT:
-
-* a full knowledge base system
-* a production-grade search engine
-* a complex AI platform
-
-***
-
-👉 Keep it:
-
-* simple
-* personal
-* useful
-
-***
-
-# 🔁 Feedback Loop
-
-This project evolves through:
-
-```
-Ask → Observe → Log (FEEDBACK.md) → Improve → Repeat
-```
-
-***
-
-👉 The `FEEDBACK.md` file is the most important driver of progress.
-
-***
-
-# ✅ Summary
+## ✅ Summary
 
 projects-ai evolves like this:
 
-1. Search → answers
-2. Answers → structure
-3. Structure → insights
-4. Insights → reflection
-
-👉 Final goal:
-
-> “Understand your own work better than you currently do”
-
+```
+Search → Answers → Structure → Suggestions → Action
 ```
 
----
+Final goal:
 
-# 🧠 Why this roadmap works for you
-
-This is very aligned with your style:
-
-- ✅ minimal first  
-- ✅ feedback-driven evolution  
-- ✅ practical improvements (not theory)  
-- ✅ slowly increases capability  
+👉 **Turn past projects into future momentum**
 
 ---
-
-# 🔥 One key thing to notice
-
-The roadmap is **not about adding features**  
-It’s about increasing:
-
-> **insight quality**
-
----
-
-# 🚀 Suggested next step (after this)
-
-Now that you have a roadmap:
-
-👉 Go back to the tool and use it for 10–15 real queries
-
-Then:
-
-- add 2–3 FEEDBACK entries  
-- observe where it breaks / feels weak  
-
----
-
-👉 THAT will tell you which roadmap step matters most next
-
----
-
-# 👀 If you want next step with me
-
-We can now do:
-
-✅ “dashboard-style output” (high signal / low noise)  
-✅ or “make suggestions (what should I build next?) really good”
-
----
-
-Just tell me 👍
-```
